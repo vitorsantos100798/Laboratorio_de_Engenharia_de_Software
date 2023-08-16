@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista Ordenada</title>
+,</head>
+<body>
+    <h2>Lista Ordenada</h2>
+    
+    <form id="dataForm">
+        <label for="data">Digite um valor:</label>
+        <input type="text" id="data" />
+        <button type="button" id="addButton">Adicionar</button>
+    </form>
+    
+    <h3>Dados Cadastrados:</h3>
+    <ol id="dataList"></ol>
+    
+    <script>
+        function DataHandler() {
+            var self = this;
+            this.dataArray = [];
+
+            this.updateDataList = function () {
+                var dataList = document.getElementById("dataList");
+                dataList.innerHTML = "";
+                
+                var sortedArray = self.dataArray.slice().sort();
+                
+                for (var i = 0; i < sortedArray.length; i++) {
+                    var listItem = document.createElement("li");
+                    listItem.textContent = sortedArray[i];
+                    dataList.appendChild(listItem);
+                }
+            };
+
+            var addButton = document.getElementById("addButton");
+            var dataInput = document.getElementById("data");
+
+            addButton.addEventListener("click", function () {
+                var newData = dataInput.value.trim();
+                
+                if (newData !== "") {
+                    self.dataArray.push(newData);
+                    dataInput.value = "";
+                    self.updateDataList();
+                }
+            });
+        }
+
+        var dataHandler = new DataHandler();
+    </script>
+</body>
+</html>
