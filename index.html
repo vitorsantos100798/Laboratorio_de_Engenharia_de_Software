@@ -17,17 +17,17 @@
     
     <script>
         function DataHandler() {
-            var self = this;
+            let self = this;
             this.dataArray = [];
 
             this.updateDataList = function () {
-                var dataList = document.getElementById("dataList");
+                let dataList = document.getElementById("dataList");
                 dataList.innerHTML = "";
                 
-                var sortedArray = self.dataArray.slice().sort();
+                let sortedArray = self.dataArray.slice().sort();
                 
-                for (var i = 0; i < sortedArray.length; i++) {
-                    var listItem = document.createElement("li");
+                for (let i = 0; i < sortedArray.length; i++) {
+                    let listItem = document.createElement("li");
                     listItem.textContent = sortedArray[i];
                     dataList.appendChild(listItem);
                 }
@@ -37,7 +37,7 @@
             var dataInput = document.getElementById("data");
 
             addButton.addEventListener("click", function () {
-                var newData = dataInput.value.trim();
+                let newData = dataInput.value.trim();
                 
                 if (newData !== "") {
                     self.dataArray.push(newData);
